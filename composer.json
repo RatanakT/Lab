@@ -1,0 +1,19 @@
+{
+    "name": "ratanak/lab-composer",
+    "description": "no",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Ratanak\\LabComposer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RatanakT",
+            "email": "ratanakthan.tr@gmail.com"
+        }
+    ],
+    "require": {
+        "envms/fluentpdo": "^2.2"
+    }
+}
