@@ -4,8 +4,8 @@ $username = "root";
 $password = "";
 $database = "webform";
 
-$conn = mysqli_connect($server,$username,$password,$database);
-if(!$conn){
+$connection = mysqli_connect($server,$username,$password,$database);
+if(!$connection){
     echo "<script>alert('Connection Failed.')</script>";
 }
 ?>
