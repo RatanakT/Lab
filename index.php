@@ -12,7 +12,7 @@
 <body style="margin: 100px;">
    <div class="d-flex justify-content-between">
      <h3 >List of Products</h3>
-     <a class='btn btn-success btn-sm' href='add' > <i class="fa-solid fa-plus"></i>  Add more product</a>
+     <a class='btn btn-success btn-sm' href='add.php' > <i class="fa-solid fa-plus"></i>  Add more product</a>
 
    </div>
     <br>
