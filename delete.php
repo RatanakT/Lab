@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,22 +18,14 @@
 
 <?php 
 
-include 'config.php' ;
+include 'fluent_db.php' ;
 // Check connection
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
-}
 
 $deleteID =$_GET['rn'];
-$query ="DELETE FROM product WHERE id = '$deleteID'";
-$result = $connection->query($query);
+$query = $fluent->deleteFrom('product')->where('id', $deleteID)->execute();
 
-if($result){
     echo "<h3 >Record deleted from database</h3>";
-}
-else{
-    echo "<h3>Failed to delete record from database</h3>";
-}
+
 echo "<br/>
 <a class='btn btn-success btn-sm' href='index.php'>Back</a>
 ";
