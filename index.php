@@ -50,7 +50,8 @@
                 <td>" . $row["price"] . "</td>
                 <td>
                     <a class='btn btn-primary btn-sm' href='update'>Update</a>
-                    <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'>Delete</a>
+                    <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'' onclick=\"return confirm('Are you sure you want to delete this item?');\">Delete
+                        </a>
                 </td>
             </tr>";
 
