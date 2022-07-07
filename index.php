@@ -13,7 +13,7 @@
 <body style="margin: 100px;">
    <div class="d-flex justify-content-between">
      <h3 >List of Products</h3>
-     <a class='btn btn-success btn-sm' href='add' > <i class="fa-solid fa-plus"></i>  Add more product</a>
+     <a class='btn btn-success btn-sm' href='add.php' > <i class="fa-solid fa-plus"></i>  Add more product</a>
 
    </div>
     <br>
@@ -31,35 +31,43 @@
 		</thead>
         <tbody>
             <?php
-           include 'config.php' ;
-            // Check connection
-			if ($connection->connect_error) {
-				die("Connection failed: " . $connection->connect_error);
-			}
-
+           include 'fluent_db.php' ;
+         
+			 
             // read all row from database table
-			$sql = "SELECT * FROM product";
-			$result = $connection->query($sql);
-
-            if (!$result) {
-				die("Invalid query: " . $connection->error);
-			}
+			$query = $fluent->from('product');
+                
+			//$result = $pdo->query($query);       
 
             // read data of each row
-			while($row = $result->fetch_assoc()) {
+
+            foreach ($query as $row){
                 echo "<tr>
-                    <td>" . $row["id"] . "</td>
-                    <td>" . $row["name"] . "</td>
-                    <td>" . $row["amount"] . "</td>
-                    <td>" . $row["price"] . "</td>
-                    <td>
-                        <a class='btn btn-primary btn-sm' href='update'>Update</a>
-                        <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'' onclick=\"return confirm('Are you sure you want to delete this item?');\">Delete
-                        </a>
-                    </td>
-                </tr>";
+                <td>" . $row["id"] . "</td>
+                <td>" . $row["name"] . "</td>
+                <td>" . $row["amount"] . "</td>
+                <td>" . $row["price"] . "</td>
+                <td>
+                    <a class='btn btn-primary btn-sm' href='update'>Update</a>
+                    <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'>Delete</a>
+                </td>
+            </tr>";
+
             }
-            $connection->close();
+			// while($row = $result->fetch()) {
+            //     echo "<tr>
+            //         <td>" . $row["id"] . "</td>
+            //         <td>" . $row["name"] . "</td>
+            //         <td>" . $row["amount"] . "</td>
+            //         <td>" . $row["price"] . "</td>
+            //         <td>
+            //             <a class='btn btn-primary btn-sm' href='update'>Update</a>
+            //             <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'>Delete</a>
+            //         </td>
+            //     </tr>";
+            // }
+            $fluent->close();
+            
             ?>
         </tbody>
     </table>
