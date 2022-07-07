@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.20/sweetalert2.min.css">
     <title>Document</title>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body style="margin: 100px;">
    <div class="d-flex justify-content-between">
@@ -70,5 +71,6 @@
 
 
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
