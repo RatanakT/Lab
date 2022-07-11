@@ -53,7 +53,7 @@
                 <td>" . $row["amount"] . "</td>
                 <td>" . $row["price"] . "</td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href='update.php'>Update</a>
+                    <a class='btn btn-primary btn-sm' href='update.php?id={$row['id']}'>Update</a>
                     <button id='btndelete' name='delete' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#deletemodal' >Delete</button>
                     
                 </td>

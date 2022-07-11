@@ -1,3 +1,27 @@
+<?php 
+   include 'fluent_db.php';
+   if(isset($_REQUEST['id'])){
+    $id = $_REQUEST['id'];
+    $query = $fluent->from('product')->where('id',$id);
+    $row = $query->fetch();
+    $name = $row['name'];
+    $amount=$row['amount'];
+    $price=$row['price'];
+    $id_p=$row['id'];
+   }
+   if(isset($_POST['submit'])){
+   // include 'fluent_db.php' ;
+    $product_id=$_POST['prod_id'];
+    $name   = $_POST['name'];
+    $amount      = $_POST['amount'];
+    $price     = $_POST['price'];
+   
+    $values = array('name' => $name, 'amount' => $amount,'price' => $price);
+    $query = $fluent->update('product')->set($values)->where('id',$product_id)->execute();
+    header('Location:index.php');
+    
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,47 +35,24 @@
 <body class="d-flex justify-content-center"> 
 <div class="mt-4 m-4 p-5 w-50 " style="background-color: #D3EBCD; border-radius: 25px;">
 
-<form action="add_to_database.php" method="POST">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="container">
             <h1>Update Product</h1>
             <hr>         
             <label for="name">Product Name</label>
-            <input class="form-control mb-3" type="text" name="name" required>
-
+            <input type="" name="prod_id" value="<?php echo $id_p ?>">
+            <input class="form-control mb-3" type="text" name="name" value="<?php echo $name; ?>"
             <label for="amount">Amount</label>
-            <input class="form-control mb-3" type="text" name="amount" required>
+            <input class="form-control mb-3" type="text" name="amount" value="<?php echo $amount; ?>">
 
             <label for="price">Price</label>
-            <input class="form-control mb-3" type="text" name="price" required>
+            <input class="form-control mb-3" type="text" name="price" value="<?php echo $price; ?>">
 
             <hr>
           
-            <!-- <button type="submit" name="register" class ="btn btn-outline-dark ">Register</button> -->
-            <div class="row justify-content-center" ><input class="btn btn-outline-dark" type="submit" name="update" value="Update"></div><br>
+            <!-- <button type="submit" name="submit" class ="btn btn-outline-dark ">Edit</button> -->
+            <div class="row justify-content-center" ><input class="btn btn-outline-dark" type="submit" name="submit" value="Update"></div><br>
         </div>
-      </form>
-      <?php 
-   include 'fluent_db.php' ;
-   if(isset($_POST['update'])){
-    $name   = $_POST['name'];
-    $amount      = $_POST['amount'];
-    $price     = $_POST['price'];
-   
-    $values = array('name' => $name, 'amount' => $amount,'price' => $price);
-    $query = $fluent->insertInto('product')->values($values)->execute();
-    
-$updateID =$_GET['rn'];
-$set = array('name' => $name,'amount' => $amount,'price' => $price);
-
-$query = $fluent->update('product')->set($set)->where('id', $updateID)->execute();
-
-    echo "<h3 >Record deleted from database</h3>";
-
-echo "<br/>
-<a class='btn btn-success btn-sm' href='index.php'>Back</a>
-";
-   }
-?>
-    
+      </form>  
 </body>
 </html>
