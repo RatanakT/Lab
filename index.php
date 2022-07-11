@@ -53,14 +53,9 @@
                 <td>" . $row["amount"] . "</td>
                 <td>" . $row["price"] . "</td>
                 <td>
-<<<<<<< HEAD
                     <a class='btn btn-primary btn-sm' href='update.php'>Update</a>
                     <button id='btndelete' name='delete' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#deletemodal' >Delete</button>
-=======
-                    <a class='btn btn-primary btn-sm' href='update'>Update</a>
-                    <a class='btn btn-danger btn-sm' href='delete.php?rn=$row[id]'' onclick=\"return confirm('Are you sure you want to delete this item?');\">Delete
-                        </a>
->>>>>>> 737b6773a1a6a2e9e47300cc36552c8b1ef1c58a
+                    
                 </td>
             </tr>";
 
