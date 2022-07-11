@@ -136,3 +136,26 @@ echo "<br/>
 <a class='btn btn-success btn-sm' href='index.php'>Back</a>
 ";
 ?>
+
+<?php echo $_POST["name"]; ?>
+
+ <body class="d-flex justify-content-center">
+    <div class="mt-4 m-4 p-5 w-50 " style="background-color: #D3EBCD; border-radius: 25px;">
+    <h4>Registered Product</h4>
+    <ul class="list-group list-group-horizontal">
+            <li class="list-group-item col-sm-4">Name</li>
+            <li class="list-group-item col-sm-8"></li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+            <li class="list-group-item col-sm-4">Amount</li>
+            <li class="list-group-item col-sm-8"></li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+            <li class="list-group-item col-sm-4">Price</li>
+            <li class="list-group-item col-sm-8"></li>
+    </ul>
+    <br>
+    <div><a href="index.php" ><button type="button" class="btn btn-outline-danger">Back</button></a></div>
+    </div>
+      
+</div>
