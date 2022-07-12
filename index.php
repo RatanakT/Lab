@@ -53,7 +53,7 @@
                 <td>" . $row["amount"] . "</td>
                 <td>" . $row["price"] . "</td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href='update.php?id={$row['id']}'>Update</a>
+                    <a class='btn btn-primary btn-sm btn-update' data-target=\"#updatemodel\"'>Update</a>
                     <button id='btndelete' name='delete' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#deletemodal' >Delete</button>
                     
                 </td>
@@ -119,6 +119,57 @@
         </div>
     </div>
 
+        <!-- POP UP TO UPDATE PRODUCT -->
+        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Update Product </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form  action="update.php" id="form" method="POST">
+
+                    <div class="modal-body">
+
+                        <input type="hidden" name="updateid" id="updateid">
+
+                        <div class="form-group">
+                            <label>Name </label>
+                            <input type="text" name="updatename" id="updatename" class="form-control"
+                                placeholder="Enter Product Name">
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label> Amount </label>
+                            <input type="text" name="updateamount" id="updateamount" class="form-control"
+                                placeholder="Enter Product Amount ">
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label> Price </label>
+                            <input type="text" name="updateprice" id="updateprice" class="form-control"
+                                placeholder="Enter Product Price">
+                        </div>
+                        <br>
+
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="confirmupdate"  type="submit" name="update" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
      <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
      <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -152,6 +203,21 @@
                 position: 'center',
                 icon: 'success',
                 title: 'Product Added Successfully',
+                showConfirmButton: false,
+                timer: 1500
+                })
+        });
+
+      });
+    </script>
+    <script>
+      $(function () {
+
+        $('#confirmupdate').on('click', function () {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Product Updated',
                 showConfirmButton: false,
                 timer: 1500
                 })
@@ -193,5 +259,26 @@
 
       });
     </script>  
+    <script>
+        $(document).ready(function () {
+            $('.btn-update').on('click', function() {
+                $('#updatemodel').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function (){
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#updateid').val(data[0]);
+                $('#updatename').val(data[1]);
+                $('#updateamount').val(data[2]);
+                $('#updateprice').val(data[3]);
+            });
+
+        });
+    </script>
 </body>
 </html>
