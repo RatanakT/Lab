@@ -9,6 +9,6 @@
     $values = array('name' => $name, 'amount' => $amount,'price' => $price);
     $query = $fluent->insertInto('product')->values($values)->execute();
     sleep(2); 
-    header('Location: index.php');
+    header('Location: table.php');
    }
 ?>

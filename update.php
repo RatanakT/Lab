@@ -18,7 +18,7 @@
     $values = array('name' => $name, 'amount' => $amount,'price' => $price);
     $query = $fluent->update('product')->set($values)->where('id',$product_id)->execute();
     sleep(2);
-    header('Location:index.php');
+    header('Location:table.php');
     
    }
 ?>
